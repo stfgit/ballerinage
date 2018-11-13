@@ -13,14 +13,18 @@ internal:JwtHeader jwtHeader= {
     typ: "JWT"
 };
 
-internal:JwtPayload jwtPayload = {
-    iss: "ballerina.stfweb.com",
-    sub: "ballerina.stfweb.com",
-    exp: 1573554720,
-    aud: ["ballerina"]
-};
+function createPayload(string iss, string sub, int exp) returns internal:JwtPayload {
+    return {
+        iss: iss,
+        sub: sub,
+        exp: exp,
+        aud: ["ballerina"]
+    };
+}
 
-public function main() {
+public function main(string iss = "ballerina.stfweb.com", string sub = "ballerina.stfweb.com", int exp = 1573554720) {
+    internal:JwtPayload jwtPayload = createPayload(iss, sub, exp);
+
     var chkToken = internal:issue(jwtHeader, jwtPayload, jwtConfig);
     match chkToken {
         string token => {
