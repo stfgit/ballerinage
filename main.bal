@@ -1,5 +1,6 @@
 import ballerina/internal;
 import ballerina/io;
+import jwt;
 
 
 public function main(string iss = "ballerina.stfweb.com", string sub = "ballerina.stfweb.com", int exp = 1573554720, 
@@ -9,7 +10,7 @@ public function main(string iss = "ballerina.stfweb.com", string sub = "ballerin
     if (lengthof aud == 0) {
         aud = ["ballerina"];
     }
-    var chkToken = signJwt(iss, sub, exp, keyAlias, keyPassword, keyStoreFilePath = keyStoreFilePath, keyStorePassword = keyStorePassword, ...aud);
+    var chkToken = jwt:signJwt(iss, sub, exp, keyAlias, keyPassword, keyStoreFilePath = keyStoreFilePath, keyStorePassword = keyStorePassword, ...aud);
 
     match chkToken {
         string token => {
