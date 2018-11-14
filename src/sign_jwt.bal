@@ -4,10 +4,10 @@ import ballerina/io;
 
 function createConfig(string keyAlias, string keyPassword, string keyStoreFilePath, string keyStorePassword) returns internal:JWTIssuerConfig {
     return {
-        keyAlias: "stfballerinajwt",
-        keyPassword: "ballerina",
-        keyStoreFilePath: "${ballerina.home}/bre/security/ballerinaKeystore.p12",
-        keyStorePassword: "ballerina"
+        keyAlias: keyAlias,
+        keyPassword: keyPassword,
+        keyStoreFilePath: keyStoreFilePath,
+        keyStorePassword: keyStorePassword
         };
 }
 
