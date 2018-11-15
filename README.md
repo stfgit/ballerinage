@@ -1,6 +1,7 @@
 # ballerinage
 Ballerina stuff
 
-JWT signature
-...
+**JWT signature**
+
+**...**
 
